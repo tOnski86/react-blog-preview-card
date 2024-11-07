@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
+
 const data = [
   {
     author: 'Greg Hooper',
@@ -11,19 +14,56 @@ const data = [
   },
 ];
 
+function dateConverter(timestamp) {
+  return new Date(+timestamp * 1000).toLocaleDateString('en-gb', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
+function capitalizeString(string) {
+  return `${string.at(0).toUpperCase()}${string.slice(1)}`;
+}
+
 function App() {
-  function dateConverter(timestamp) {
-    return new Date(+timestamp * 1000).toLocaleDateString('en-gb', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    });
-  }
-  // console.log(dateConverter(data[0].date));
+  const [article, setArticle] = useState({});
+
+  useEffect(function () {
+    function handleSetArticle(obj) {
+      const {
+        articleImage,
+        author,
+        authorImage,
+        previewText,
+        title,
+        category,
+        date,
+      } = obj;
+
+      setArticle({
+        articleImage,
+        author,
+        authorImage,
+        previewText,
+        title,
+        category: capitalizeString(category),
+        date: dateConverter(date),
+      });
+    }
+
+    handleSetArticle(data.at(0));
+  }, []);
 
   return (
     <div>
-      <h1 className='text-gray-950'>Hello React!</h1>
+      <img src={article.articleImage} alt={article.title} />
+      <h3>{article.category}</h3>
+      <p>Published {article.date}</p>
+      <h2>{article.title}</h2>
+      <p>{article.previewText}</p>
+      <img src={article.authorImage} alt={article.author} />
+      <h3>{article.author}</h3>
     </div>
   );
 }
