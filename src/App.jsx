@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <h1 className='text-cyan-600'>Hello React!</h1>
+      <h1 className='text-gray-950'>Hello React!</h1>
     </div>
   );
 }
