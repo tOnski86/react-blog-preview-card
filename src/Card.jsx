@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 function Card({ article }) {
   return (
-    <div className='bg-white w-96 p-5 rounded-2xl border-solid border border-gray-950 text-gray-950 relative after:absolute after:w-full after:h-full after:bg-gray-950 after:left-2 after:top-2 after:-z-10 after:rounded-2xl'>
+    <div className='bg-white w-96 p-5 rounded-2xl border-solid border border-gray-950 text-gray-950 relative after:absolute after:w-full after:h-full after:bg-gray-950 after:left-2 after:top-2 after:-z-10 sm:mx-auto'>
       <img
         src={article.articleImage}
         alt={article.title}
