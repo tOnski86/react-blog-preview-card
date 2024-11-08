@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import Card from './Card';
 
 const data = [
   {
@@ -57,13 +57,7 @@ function App() {
 
   return (
     <div>
-      <img src={article.articleImage} alt={article.title} />
-      <h3>{article.category}</h3>
-      <p>Published {article.date}</p>
-      <h2>{article.title}</h2>
-      <p>{article.previewText}</p>
-      <img src={article.authorImage} alt={article.author} />
-      <h3>{article.author}</h3>
+      <Card article={article} />
     </div>
   );
 }
